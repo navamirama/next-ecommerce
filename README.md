@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+use pexels.com and copy image address url
+add this in nextjs config , as without this next js will not display images from external sources
+
+## use this below line to replace the tailwind bg-color as tailwind bg is not working in this app
+
+style={{ backgroundColor: "#000000", color: "white" }}
+
+getProducts API call is in homePage
+
+Update oAUth on WIx : video time at 3.51
