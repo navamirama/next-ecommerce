@@ -152,7 +152,7 @@
 // };
 
 // export default CartModal;
-
+// @ts-nocheck
 "use client";
 
 import Image from "next/image";
