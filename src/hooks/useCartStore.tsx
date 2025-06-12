@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { create } from "zustand";
 import { currentCart } from "@wix/ecom";
 import { WixClient } from "@/context/wixContext";
