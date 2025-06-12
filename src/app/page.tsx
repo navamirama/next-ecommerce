@@ -17,7 +17,6 @@ const HomePage = async () => {
   // }, [wixClient]);
 
   // const res = await wixClient.products.queryProducts().find();
-  // console.log(res);
 
   return (
     <div className="">
