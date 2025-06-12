@@ -10,7 +10,7 @@ const HomePage = async () => {
   // useEffect(() => {
   //   const getProducts = async () => {
   //     const res = await wixClient.products.queryProducts().find();
-  //     console.log(res);
+
   //   };
 
   //   getProducts();
