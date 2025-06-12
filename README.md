@@ -49,3 +49,14 @@ Update oAUth on WIx : video time at 3.51
 lsof -i tcp:3000
 
 kill -9 PID
+// "devDependencies": {
+// "@types/js-cookie": "^3.0.6",
+// "@types/node": "^20",
+// "@types/react": "^18",
+// "@types/react-dom": "^18",
+// "eslint": "^8",
+// "eslint-config-next": "14.2.2",
+// "postcss": "^8",
+// "tailwindcss": "^3.4.1",
+// "typescript": "^5"
+// }
