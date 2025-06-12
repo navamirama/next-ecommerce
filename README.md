@@ -45,3 +45,7 @@ style={{ backgroundColor: "#000000", color: "white" }}
 getProducts API call is in homePage
 
 Update oAUth on WIx : video time at 3.51
+
+lsof -i tcp:3000
+
+kill -9 PID
