@@ -78,7 +78,7 @@ const NavIcons = () => {
           className="absolute p-4 rounded-md top-12 left-0 bg-white text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20"
           style={{ backgroundColor: "black", color: "white" }}
         >
-          <Link href="/profile">Profile</Link>
+          {/* <Link href="/profile">Profile</Link> */}
           <div className="mt-2 cursor-pointer" onClick={handleLogout}>
             {isLoading ? "Logging out" : "Logout"}
           </div>
