@@ -181,6 +181,7 @@ const CartModal = () => {
           ecomCheckout: { checkoutId: checkout.checkoutId },
           callbacks: {
             postFlowUrl: window.location.origin,
+            suspense: true,
             thankYouPageUrl: `${window.location.origin}/success`,
           },
         });
