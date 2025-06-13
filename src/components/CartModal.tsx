@@ -182,7 +182,7 @@ const CartModal = () => {
           callbacks: {
             postFlowUrl: window.location.origin,
             suspense: true,
-            thankYouPageUrl: `${window.location.origin}/success`,
+            thankYouPageUrl: `${window.location.origin}/SuccessPageWrapper`,
           },
         });
 

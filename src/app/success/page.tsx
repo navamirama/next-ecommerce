@@ -36,13 +36,11 @@ const SuccessPage = () => {
   );
 };
 
-export default SuccessPage;
 
-// export function Searchbar() {
-//   return (
-//     // You could have a loading skeleton as the `fallback` too
-//     <Suspense>
-//       <Search />
-//     </Suspense>
-//   )
-// }
+export default function SuccessPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessPage />
+    </Suspense>
+  );
+}
