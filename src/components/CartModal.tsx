@@ -1,4 +1,4 @@
-
+// "use client";
 
 // import Image from "next/image";
 // import { useCartStore } from "@/hooks/useCartStore";
@@ -182,7 +182,7 @@ const CartModal = () => {
           callbacks: {
             postFlowUrl: window.location.origin,
             suspense: true,
-            thankYouPageUrl: `${window.location.origin}/SuccessPageWrapper`,
+            thankYouPageUrl: `${window.location.origin}/success`,
           },
         });
 

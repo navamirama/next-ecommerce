@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "app-uploads-cdn.fera.ai",
       },
+      {
+        protocol: "https",
+        hostname: "img-wixmp-8be454c954980f083caba37c.wixmp.com",
+      },
     ],
   },
 };
