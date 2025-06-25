@@ -17,21 +17,20 @@ const Footer = () => {
         {/* LEFT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
-            <div className="text-2xl tracking-wide">LAMA</div>
+            <div className="text-2xl tracking-wide">Vela Prints</div>
           </Link>
           <p>
-            3252 Winding Way, Central Plaza, Willowbrook, CA 90210, United
-            States
+            England, United Kingdom
           </p>
-          <span className="font-semibold">hello@lama.dev</span>
-          <span className="font-semibold">+1 234 567 890</span>
-          <div className="flex gap-6">
+          <span className="font-semibold">help@velaprints.co.uk</span>
+          {/* <span className="font-semibold">+1 234 567 890</span> */}
+          {/* <div className="flex gap-6">
             <Image src="/facebook.png" alt="" width={16} height={16} />
             <Image src="/instagram.png" alt="" width={16} height={16} />
             <Image src="/youtube.png" alt="" width={16} height={16} />
             <Image src="/pinterest.png" alt="" width={16} height={16} />
             <Image src="/x.png" alt="" width={16} height={16} />
-          </div>
+          </div> */}
         </div>
         {/* CENTER */}
         <div className="hidden lg:flex justify-between w-1/2">
@@ -55,7 +54,7 @@ const Footer = () => {
               <Link href="">All Products</Link>
             </div>
           </div>
-          <div className="flex flex-col justify-between">
+          {/* <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">HELP</h1>
             <div className="flex flex-col gap-6">
               <Link href="">Customer Service</Link>
@@ -64,7 +63,7 @@ const Footer = () => {
               <Link href="">Legal & Privacy</Link>
               <Link href="">Gift Card</Link>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* RIGHT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
