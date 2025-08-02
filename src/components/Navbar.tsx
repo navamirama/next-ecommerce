@@ -22,16 +22,19 @@ const Navbar = () => {
           <Image alt="" src="/logo.png" width={24} height={24} />
           <div className="text-2xl tracking-wide" > Vela Prints </div>
         </Link>
-        <div className=" xl:flex gap-4">
-          <Link href="/">Homepage</Link>
-          <Link href="/">Shop</Link>
-          <Link href="/">Deals</Link>
+        <div className=" xl:flex gap-4 pt-10">
+          <Link href="/" className="md:px-8 lg:px-16">Home</Link>
+          <Link href="/" className="md:px-8 lg:px-16">Categories</Link>
+          {/* <Link href="/">Deals</Link> */}
           <Link href="/">About</Link>
           <Link href="/">Contact</Link>
         </div>
         {/* RIGHT */}
         <div className="w-2/3 xl:w-1/2 flex items-center justify-between gap-8">
+
           <SearchBar />
+
+
           <NavIcons />
         </div>
       </div>
