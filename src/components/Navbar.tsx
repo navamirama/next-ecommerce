@@ -26,8 +26,8 @@ const Navbar = () => {
           <Link href="/" className="md:px-8 lg:px-16">Home</Link>
           <Link href="/" className="md:px-8 lg:px-16">Categories</Link>
           {/* <Link href="/">Deals</Link> */}
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
         {/* RIGHT */}
         <div className="w-2/3 xl:w-1/2 flex items-center justify-between gap-8">

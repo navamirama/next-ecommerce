@@ -32,8 +32,9 @@ const ProductImages = ({ items }: { items: any }) => {
           src={items[index].image?.url}
           alt=""
           fill
-          sizes="50vw"
-          className="object-cover rounded-md"
+          sizes="7000vw"
+          // className="object-cover rounded-md"
+          className="object-contain rounded-md"
         />
       </div>
       <div className="flex justify-between gap-4 mt-8">
