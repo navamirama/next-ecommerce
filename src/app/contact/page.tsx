@@ -37,7 +37,7 @@ export default function Contact() {
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Phone</h3>
                     <p className="text-gray-600 dark:text-gray-300">
                         <a href="tel:+1234567890" className="text-blue-600 dark:text-blue-400 hover:underline">
-                            +447474163199
+                            +44 7474163199
                         </a>
                     </p>
                 </div>

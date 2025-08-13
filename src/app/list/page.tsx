@@ -1,7 +1,6 @@
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import Image from "next/image";
-import Link from "next/link";
 import { WixClientContext } from "@/context/wixContext";
 import { Suspense, useContext } from "react";
 import { wixClientServer } from "@/lib/wixClientServer";

@@ -16,14 +16,16 @@
 // components/About.tsx
 
 // components/About.tsx
-import Link from "next/link"
+import Image from "next/image";
+
+import Link from "next/link";
 export default function About() {
     return (
         <section className="bg-white py-16 px-6 md:px-12 lg:px-24">
             <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
                 {/* Image / Visual */}
                 <div className="w-full lg:w-1/2">
-                    <img
+                    <Image
                         src="/about.png"
                         alt="Vela Graphic Wear collection"
                         className="rounded-lg shadow-lg object-cover w-full h-full"
