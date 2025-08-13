@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@custom-react-hooks/use-click-outside": "^1.5.1",
     "@wix/ecom": "^1.0.540",
     "@wix/members": "^1.0.77",
     "@wix/redirects": "^1.0.44",

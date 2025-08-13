@@ -2,6 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 import NavIcons from "./NavIcons"
 import SearchBar from "./SearchBar"
+import CategoriesDropdown from "./CategoriesDropDown"
+import CategoriesDropdownServer from "./CategoriesDropdownServer"
 
 const Navbar = () => {
   return (
@@ -19,12 +21,14 @@ const Navbar = () => {
         {/* LEFT */}
         <div className="flex items-center gap-12"> </div>
         <Link href="/" className="flex items-center gap-3">
-          <Image alt="" src="/logo.png" width={24} height={24} />
-          <div className="text-2xl tracking-wide" > Vela Prints </div>
+          <Image alt="" src="/logo.png" width={245} height={205} className=" xl:flex gap-4 pt-16 pl-20" />
+          {/* <div className="text-2xl tracking-wide" > Vela Prints </div> */}
         </Link>
         <div className=" xl:flex gap-4 pt-10">
           <Link href="/" className="md:px-8 lg:px-16">Home</Link>
-          <Link href="/" className="md:px-8 lg:px-16">Categories</Link>
+          {/* <Link href="/" className="md:px-8 lg:px-16">Categories</Link> */}
+          {/* <CategoriesDropdown /> */}
+          <CategoriesDropdownServer />
           {/* <Link href="/">Deals</Link> */}
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>

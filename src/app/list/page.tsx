@@ -17,7 +17,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
   console.log(response);
 
   return (
-    <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <div className="px-4 pt-20 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* CAMPAIGN */}
       <div
         className="hidden bg-pink-50 px-4 sm:flex justify-between h-64"
