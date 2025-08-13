@@ -27,6 +27,8 @@ export default function About() {
                 <div className="w-full lg:w-1/2">
                     <Image
                         src="/about.png"
+                        width={72}
+                        height={96}
                         alt="Vela Graphic Wear collection"
                         className="rounded-lg shadow-lg object-cover w-full h-full"
                     />
@@ -41,7 +43,7 @@ export default function About() {
                         At <span className="font-semibold">Vela Graphic Wear</span>, we celebrate bold self-expression. From street style to anime, Japanese, Indian desi, and spiritual-themed prints—all on ultra-soft, premium cotton T-shirts and hoodies.
                     </p>
                     <p className="text-gray-700">
-                        Each piece blends comfort with culture, designed to feel as good as it looks. Whether you're after edgy streetwear or a mindful spiritual tee, you’ll find your vibe here.
+                        {`Each piece blends comfort with culture, designed to feel as good as it looks. Whether you're after edgy streetwear or a mindful spiritual tee, you’ll find your vibe here.`}
                     </p>
 
                     {/* Value cards */}
