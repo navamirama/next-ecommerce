@@ -153,6 +153,313 @@
 
 // export default CartModal;
 // @ts-nocheck
+// "use client";
+
+// import Image from "next/image";
+// import { useCartStore } from "@/hooks/useCartStore";
+// import { media as wixMedia } from "@wix/sdk";
+// import { useWixClient } from "@/hooks/useWixClient";
+// import { currentCart } from "@wix/ecom";
+// import { Suspense } from "react";
+// import { useState, useRef } from "react";
+// import Link from "next/link";
+// import { useClickOutside } from '@custom-react-hooks/use-click-outside';
+
+// const CartModal = () => {
+//   // TEMPORARY
+//   // const cartItems = true;
+
+//   const wixClient = useWixClient();
+//   const { cart, isLoading, removeItem } = useCartStore();
+//   const [isOpen, setIsOpen] = useState(false);
+//   const ref = useRef<HTMLDivElement>(null);
+//   useClickOutside(ref, () => setIsOpen(false));
+
+//   const handleCheckout = async () => {
+//     try {
+//       const checkout =
+//         await wixClient.currentCart.createCheckoutFromCurrentCart({
+//           channelType: currentCart.ChannelType.WEB,
+//         });
+
+//       const { redirectSession } =
+//         await wixClient.redirects.createRedirectSession({
+//           ecomCheckout: { checkoutId: checkout.checkoutId },
+//           callbacks: {
+//             postFlowUrl: window.location.origin,
+//             suspense: true,
+//             thankYouPageUrl: `${window.location.origin}/success`,
+//           },
+//         });
+
+//       if (redirectSession?.fullUrl) {
+//         window.location.href = redirectSession.fullUrl;
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   return (
+//     <Suspense>
+
+//       <div className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20" style={{ backgroundColor: "white", color: "black" }}>
+//         {!cart.lineItems ? (
+//           <div className="">Cart is Empty</div>
+//         ) : (
+//           <>
+//             <h2 className="text-xl">Shopping Cart</h2>
+//             {/* LIST */}
+//             <div className="flex flex-col gap-8" style={{ backgroundColor: "white", color: "black" }}>
+//               {/* ITEM */}
+//               {cart.lineItems.map((item) => (
+//                 <div className="flex gap-4" key={item._id}>
+//                   {item.image && (
+//                     <Image
+//                       src={wixMedia.getScaledToFillImageUrl(
+//                         item.image,
+//                         72,
+//                         96,
+//                         {}
+//                       )}
+//                       alt=""
+//                       width={72}
+//                       height={96}
+//                       className="object-cover rounded-md"
+//                     />
+//                   )}
+//                   <div className="flex flex-col justify-between w-full">
+//                     {/* TOP */}
+//                     <div className="">
+//                       {/* TITLE */}
+//                       <div className="flex items-center justify-between gap-8">
+//                         <h3 className="font-semibold">
+//                           {item.productName?.original}
+//                         </h3>
+//                         <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+//                           {item.quantity && item.quantity > 1 && (
+//                             <div className="text-xs text-green-500">
+//                               {item.quantity} x{" "}
+//                             </div>
+//                           )}
+//                           ${item.price?.amount}
+//                         </div>
+//                       </div>
+//                       {/* DESC */}
+//                       <div className="text-sm text-gray-500">
+//                         {item.availability?.status}
+//                       </div>
+//                     </div>
+//                     {/* BOTTOM */}
+//                     <div className="flex justify-between text-sm">
+//                       <span className="text-gray-500">Qty. {item.quantity}</span>
+//                       <div className="flex gap-8 right-10 left-20 rounded-sm" style={{ backgroundColor: "grey", color: "white" }}>
+//                         <span
+//                           className="text-blue-500"
+//                           style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
+//                           onClick={() => removeItem(wixClient, item._id!)}
+//                         >
+//                           Remove
+//                         </span>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//             {/* BOTTOM */}
+//             <div className="">
+//               <div className="flex items-center justify-between font-semibold">
+//                 <span className="">Subtotal</span>
+//                 <span className="">${cart.subtotal.amount}</span>
+//               </div>
+//               <p className="text-gray-500 text-sm mt-2 mb-4">
+//                 Shipping and taxes calculated at checkout.
+//               </p>
+//               <div className="flex justify-between text-sm">
+//                 <button className="rounded-md py-3 px-4 ring-1 ring-gray-300" style={{ backgroundColor: "green", color: "white" }}>
+//                   View Cart
+//                 </button>
+//                 <button
+//                   className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
+//                   style={{ backgroundColor: "green", color: "white" }}
+//                   disabled={isLoading}
+//                   onClick={handleCheckout}
+//                 >
+//                   Checkout
+//                 </button>
+//               </div>
+//             </div>
+//           </>
+//         )}
+//       </div>
+
+//     </Suspense>
+//   );
+// };
+
+// export default CartModal;
+
+// Below is the working version 
+
+
+
+// "use client";
+
+// import Image from "next/image";
+// import { useCartStore } from "@/hooks/useCartStore";
+// import { media as wixMedia } from "@wix/sdk";
+// import { useWixClient } from "@/hooks/useWixClient";
+// import { currentCart } from "@wix/ecom";
+// import { Suspense, useRef } from "react";
+// import { useClickOutside } from "@custom-react-hooks/use-click-outside";
+
+// interface CartModalProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+// }
+
+// const CartModal = ({ isOpen, onClose }: CartModalProps) => {
+//   const wixClient = useWixClient();
+//   const { cart, isLoading, removeItem } = useCartStore();
+//   const ref = useRef<HTMLDivElement>(null);
+
+//   useClickOutside(ref, () => onClose());
+
+//   const handleCheckout = async () => {
+//     try {
+//       const checkout =
+//         await wixClient.currentCart.createCheckoutFromCurrentCart({
+//           channelType: currentCart.ChannelType.WEB,
+//         });
+
+//       const { redirectSession } =
+//         await wixClient.redirects.createRedirectSession({
+//           ecomCheckout: { checkoutId: checkout.checkoutId },
+//           callbacks: {
+//             postFlowUrl: window.location.origin,
+//             suspense: true,
+//             thankYouPageUrl: `${window.location.origin}/success`,
+//           },
+//         });
+
+//       if (redirectSession?.fullUrl) {
+//         window.location.href = redirectSession.fullUrl;
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   // Don’t render at all if closed
+//   if (!isOpen) return null;
+
+//   return (
+//     <Suspense>
+//       <div
+//         ref={ref}
+//         className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20"
+//         style={{ backgroundColor: "white", color: "black" }}
+//       >
+//         {!cart.lineItems || cart.lineItems.length === 0 ? (
+//           <div>Cart is Empty</div>
+//         ) : (
+//           <>
+//             <h2 className="text-xl">Shopping Cart</h2>
+
+//             {/* LIST */}
+//             <div className="flex flex-col gap-8">
+//               {cart.lineItems.map((item) => (
+//                 <div className="flex gap-4" key={item._id}>
+//                   {item.image && (
+//                     <Image
+//                       src={wixMedia.getScaledToFillImageUrl(
+//                         item.image,
+//                         72,
+//                         96,
+//                         {}
+//                       )}
+//                       alt=""
+//                       width={72}
+//                       height={96}
+//                       className="object-cover rounded-md"
+//                     />
+//                   )}
+//                   <div className="flex flex-col justify-between w-full">
+//                     {/* TOP */}
+//                     <div>
+//                       <div className="flex items-center justify-between gap-8">
+//                         <h3 className="font-semibold">
+//                           {item.productName?.original}
+//                         </h3>
+//                         <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+//                           {item.quantity && item.quantity > 1 && (
+//                             <div className="text-xs text-green-500">
+//                               {item.quantity} x{" "}
+//                             </div>
+//                           )}
+//                           ${item.price?.amount}
+//                         </div>
+//                       </div>
+//                       <div className="text-sm text-gray-500">
+//                         {item.availability?.status}
+//                       </div>
+//                     </div>
+//                     {/* BOTTOM */}
+//                     <div className="flex justify-between text-sm">
+//                       <span className="text-gray-500">
+//                         Qty. {item.quantity}
+//                       </span>
+//                       <span
+//                         className="text-blue-500 cursor-pointer"
+//                         style={{
+//                           cursor: isLoading ? "not-allowed" : "pointer",
+//                         }}
+//                         onClick={() => removeItem(wixClient, item._id!)}
+//                       >
+//                         Remove
+//                       </span>
+//                     </div>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+
+//             {/* BOTTOM */}
+//             <div>
+//               <div className="flex items-center justify-between font-semibold">
+//                 <span>Subtotal</span>
+//                 <span>${cart.subtotal.amount}</span>
+//               </div>
+//               <p className="text-gray-500 text-sm mt-2 mb-4">
+//                 Shipping and taxes calculated at checkout.
+//               </p>
+//               <div className="flex justify-between text-sm">
+//                 <button
+//                   className="rounded-md py-3 px-4 ring-1 ring-gray-300"
+//                   style={{ backgroundColor: "green", color: "white" }}
+//                 >
+//                   View Cart
+//                 </button>
+//                 <button
+//                   className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
+//                   style={{ backgroundColor: "green", color: "white" }}
+//                   disabled={isLoading}
+//                   onClick={handleCheckout}
+//                 >
+//                   Checkout
+//                 </button>
+//               </div>
+//             </div>
+//           </>
+//         )}
+//       </div>
+//     </Suspense>
+//   );
+// };
+
+// export default CartModal;
+
 "use client";
 
 import Image from "next/image";
@@ -160,31 +467,30 @@ import { useCartStore } from "@/hooks/useCartStore";
 import { media as wixMedia } from "@wix/sdk";
 import { useWixClient } from "@/hooks/useWixClient";
 import { currentCart } from "@wix/ecom";
-import { Suspense } from "react";
 
-const CartModal = () => {
-  // TEMPORARY
-  // const cartItems = true;
+interface CartModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
+const CartModal = ({ isOpen, onClose }: CartModalProps) => {
   const wixClient = useWixClient();
   const { cart, isLoading, removeItem } = useCartStore();
 
   const handleCheckout = async () => {
     try {
-      const checkout =
-        await wixClient.currentCart.createCheckoutFromCurrentCart({
-          channelType: currentCart.ChannelType.WEB,
-        });
+      const checkout = await wixClient.currentCart.createCheckoutFromCurrentCart({
+        channelType: currentCart.ChannelType.WEB,
+      });
 
-      const { redirectSession } =
-        await wixClient.redirects.createRedirectSession({
-          ecomCheckout: { checkoutId: checkout.checkoutId },
-          callbacks: {
-            postFlowUrl: window.location.origin,
-            suspense: true,
-            thankYouPageUrl: `${window.location.origin}/success`,
-          },
-        });
+      const { redirectSession } = await wixClient.redirects.createRedirectSession({
+        ecomCheckout: { checkoutId: checkout.checkoutId },
+        callbacks: {
+          postFlowUrl: window.location.origin,
+          suspense: true,
+          thankYouPageUrl: `${window.location.origin}/success`,
+        },
+      });
 
       if (redirectSession?.fullUrl) {
         window.location.href = redirectSession.fullUrl;
@@ -194,99 +500,61 @@ const CartModal = () => {
     }
   };
 
+  if (!isOpen) return null;
+
   return (
-    <Suspense>
-      <div className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20" style={{ backgroundColor: "white", color: "black" }}>
-        {!cart.lineItems ? (
-          <div className="">Cart is Empty</div>
-        ) : (
-          <>
-            <h2 className="text-xl">Shopping Cart</h2>
-            {/* LIST */}
-            <div className="flex flex-col gap-8" style={{ backgroundColor: "white", color: "black" }}>
-              {/* ITEM */}
-              {cart.lineItems.map((item) => (
-                <div className="flex gap-4" key={item._id}>
-                  {item.image && (
-                    <Image
-                      src={wixMedia.getScaledToFillImageUrl(
-                        item.image,
-                        72,
-                        96,
-                        {}
-                      )}
-                      alt=""
-                      width={72}
-                      height={96}
-                      className="object-cover rounded-md"
-                    />
-                  )}
-                  <div className="flex flex-col justify-between w-full">
-                    {/* TOP */}
-                    <div className="">
-                      {/* TITLE */}
-                      <div className="flex items-center justify-between gap-8">
-                        <h3 className="font-semibold">
-                          {item.productName?.original}
-                        </h3>
-                        <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
-                          {item.quantity && item.quantity > 1 && (
-                            <div className="text-xs text-green-500">
-                              {item.quantity} x{" "}
-                            </div>
-                          )}
-                          ${item.price?.amount}
-                        </div>
-                      </div>
-                      {/* DESC */}
-                      <div className="text-sm text-gray-500">
-                        {item.availability?.status}
-                      </div>
-                    </div>
-                    {/* BOTTOM */}
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Qty. {item.quantity}</span>
-                      <div className="flex gap-8 right-10 left-20 rounded-sm" style={{ backgroundColor: "grey", color: "white" }}>
-                        <span
-                          className="text-blue-500"
-                          style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
-                          onClick={() => removeItem(wixClient, item._id!)}
-                        >
-                          Remove
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+    <div className="fixed bottom-0 left-0 w-full md:w-auto md:top-12 md:right-0 md:bottom-auto md:left-auto z-50 bg-white p-4 shadow-lg rounded-t-lg md:rounded-md">
+      <button className="absolute top-2 right-2 md:top-2 md:right-2" onClick={onClose}>
+        ✕
+      </button>
+      {!cart.lineItems || cart.lineItems.length === 0 ? (
+        <div>Cart is Empty</div>
+      ) : (
+        <>
+          <h2 className="text-xl mb-4">Shopping Cart</h2>
+          <div className="flex flex-col gap-4 max-h-64 overflow-y-auto">
+            {cart.lineItems.map((item) => (
+              <div key={item._id} className="flex gap-4 items-center">
+                {item.image && (
+                  <Image
+                    src={wixMedia.getScaledToFillImageUrl(item.image, 72, 96, {})}
+                    alt={item.productName?.original}
+                    width={72}
+                    height={96}
+                    className="object-cover rounded-md"
+                  />
+                )}
+                <div className="flex-1">
+                  <h3 className="font-semibold">{item.productName?.original}</h3>
+                  <div className="text-sm text-gray-500">Qty: {item.quantity}</div>
                 </div>
-              ))}
-            </div>
-            {/* BOTTOM */}
-            <div className="">
-              <div className="flex items-center justify-between font-semibold">
-                <span className="">Subtotal</span>
-                <span className="">${cart.subtotal.amount}</span>
+                <div className="flex flex-col items-end">
+                  <span>${item.price?.amount}</span>
+                  <button
+                    className="text-red-500 text-sm mt-1"
+                    disabled={isLoading}
+                    onClick={() => removeItem(wixClient, item._id!)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
-              <p className="text-gray-500 text-sm mt-2 mb-4">
-                Shipping and taxes calculated at checkout.
-              </p>
-              <div className="flex justify-between text-sm">
-                <button className="rounded-md py-3 px-4 ring-1 ring-gray-300" style={{ backgroundColor: "green", color: "white" }}>
-                  View Cart
-                </button>
-                <button
-                  className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
-                  style={{ backgroundColor: "green", color: "white" }}
-                  disabled={isLoading}
-                  onClick={handleCheckout}
-                >
-                  Checkout
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-    </Suspense>
+            ))}
+          </div>
+          <div className="mt-4 flex justify-between font-semibold">
+            <span>Subtotal:</span>
+            <span>${cart.subtotal?.amount}</span>
+          </div>
+          <button
+            className="mt-4 w-full py-3 bg-green-600 text-white rounded-md"
+            disabled={isLoading}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </>
+      )}
+    </div>
   );
 };
 

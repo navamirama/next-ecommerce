@@ -1,8 +1,8 @@
-import Link from "next/link"
-import Image from "next/image"
-import NavIcons from "./NavIcons"
-import SearchBar from "./SearchBar"
-import CategoriesDropdownServer from "./CategoriesDropdownServer"
+// import Link from "next/link"
+// import Image from "next/image"
+// import NavIcons from "./NavIcons"
+// import SearchBar from "./SearchBar"
+// import CategoriesDropdownServer from "./CategoriesDropdownServer"
 import Menu from "./Menu"
 
 // const Navbar = () => {
@@ -97,40 +97,206 @@ import Menu from "./Menu"
 // export default Navbar;
 
 
-const Navbar = () => {
-  return (
-    <nav className="bg-white shadow-sm px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 py-4">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
+// const Navbar = () => {
+//   return (
+//     <nav className="bg-white shadow-sm px-4 md:px-8 lg:px-11 xl:px-20 2xl:px-64">
+//       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
 
-        {/* LEFT - Logo */}
+//         {/* LEFT - Logo */}
+//         <Link href="/" className="flex items-center">
+//           <Image
+//             alt="Logo"
+//             src="/logo.png"
+//             width={140}
+//             height={60}
+//             className="object-contain"
+//           />
+//         </Link>
+
+//         {/* CENTER - Navigation Links */}
+//         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 text-gray-700 text-base font-medium">
+//           <Link href="/">Home</Link>
+//           <CategoriesDropdownServer />
+//           <Link href="/about">About</Link>
+//           <Link href="/contact">Contact</Link>
+//         </div>
+
+//         {/* RIGHT - Search & Icons */}
+//         <div className="flex items-center gap-4 md:gap-6 mt-2 md:mt-0">
+//           <SearchBar />
+//           <NavIcons />
+//         </div>
+
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+
+// const Navbar = () => {
+//   return (
+//     <nav className="px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-white shadow-sm">
+
+//       {/* TOP ROW: Logo + Icons */}
+//       <div className="flex items-center justify-between h-16 md:h-20">
+//         <Link href="/" className="flex items-center">
+//           <Image
+//             alt="Logo"
+//             src="/logo.png"
+//             width={140}
+//             height={60}
+//             className="object-contain"
+//           />
+//         </Link>
+
+//         <div className="flex items-center gap-4">
+//           <div className="hidden md:block">
+//             <SearchBar />
+//           </div>
+//           <NavIcons />
+//         </div>
+//       </div>
+
+//       {/* LINKS ROW - Desktop */}
+//       <div className="hidden md:flex justify-center gap-8 text-gray-700 text-base font-medium">
+//         <Link href="/">Home</Link>
+//         <CategoriesDropdownServer />
+//         <Link href="/about">About</Link>
+//         <Link href="/contact">Contact</Link>
+//       </div>
+
+//       {/* LINKS ROW - Mobile */}
+//       <div className="flex md:hidden justify-end gap-4 mt-2 text-gray-700 text-sm font-medium">
+//         <Link href="/">Home</Link>
+//         <CategoriesDropdownServer />
+//         <Link href="/about">About</Link>
+//         <Link href="/contact">Contact</Link>
+//       </div>
+
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+//working code below
+// import MobileMenu from "./MobileMenu"; // client-side hamburger
+// import { wixClientServer } from "@/lib/wixClientServer";
+// import CategoriesDropdownClient from "./CategoriesDropdownClient"
+
+// interface Category {
+//   _id?: string;
+//   name: string;
+//   href: string;
+// }
+
+// export const Navbar = async () => {
+//   const wixClient = await wixClientServer();
+
+//   const result = await wixClient.collections.queryCollections().find();
+
+//   console.log("RES", result);
+//   const categories: Category[] = result.items.map((col: any) => ({
+//     id: col._id,
+//     name: col.name,
+//     href: col.url?.relative || `${col.slug}`,
+//   }));
+//   console.log("CATeG", categories);
+
+//   return (
+//     <nav className="h-20 px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-white shadow-sm">
+//       <div className="flex items-center justify-between h-full">
+//         {/* Logo */}
+//         <Link href="/" className="flex items-center">
+//           <Image src="/logo.png" alt="Logo" width={140} height={60} className="object-contain" />
+//         </Link>
+
+//         {/* Desktop Nav */}
+//         <div className="hidden md:flex items-center gap-8 text-gray-700 text-base font-medium">
+//           <Link href="/">Home</Link>
+//           <CategoriesDropdownServer />
+//           <Link href="/about">About</Link>
+//           <Link href="/contact">Contact</Link>
+//         </div>
+
+//         {/* Right Icons */}
+//         <div className="hidden md:flex items-center gap-6">
+//           <SearchBar />
+//           <NavIcons />
+//         </div>
+
+//         {/* Mobile Hamburger */}
+//         <div className="md:hidden">
+//           <MobileMenu categories={categories} />
+//           <NavIcons />
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+import Link from "next/link";
+import Image from "next/image";
+import MobileMenu from "./MobileMenu"; // client-side hamburger
+import { wixClientServer } from "@/lib/wixClientServer";
+import NavIcons from "./NavIcons";
+import SearchBar from "./SearchBar";
+import CategoriesDropdownServer from "./CategoriesDropdownServer";
+
+interface Category {
+  _id?: string;
+  name: string;
+  href: string;
+}
+
+export const Navbar = async () => {
+  const wixClient = await wixClientServer();
+  const result = await wixClient.collections.queryCollections().find();
+
+  const categories: Category[] = result.items.map((col: any) => ({
+    id: col._id,
+    name: col.name,
+    href: col.url?.relative || `${col.slug}`,
+  }));
+
+  return (
+    <nav className="h-20 px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-white shadow-sm relative z-50">
+      <div className="flex items-center justify-between h-full">
+        {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            alt="Logo"
-            src="/logo.png"
-            width={140}
-            height={60}
-            className="object-contain"
-          />
+          <Image src="/logo.png" alt="Logo" width={140} height={60} className="object-contain" />
         </Link>
 
-        {/* CENTER - Navigation Links */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 text-gray-700 text-base font-medium">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8 text-gray-700 text-base font-medium">
           <Link href="/">Home</Link>
           <CategoriesDropdownServer />
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </div>
 
-        {/* RIGHT - Search & Icons */}
-        <div className="flex items-center gap-4 md:gap-6 mt-2 md:mt-0">
+        {/* Right Icons Desktop */}
+        <div className="hidden md:flex items-center gap-6">
           <SearchBar />
           <NavIcons />
         </div>
 
+        {/* Mobile Hamburger */}
+        <div className="md:hidden flex items-center gap-4">
+          <MobileMenu categories={categories} />
+        </div>
+      </div>
+
+      {/* Mobile NavIcons fixed at bottom */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg p-2 flex justify-end gap-4" style={{ backgroundColor: "white", color: "white" }}>
+        <NavIcons />
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-

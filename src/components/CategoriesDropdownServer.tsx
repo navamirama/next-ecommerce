@@ -1,12 +1,28 @@
-// components/CategoriesDropdownServer.tsx
-import Link from "next/link";
-import { useWixClient } from "@/hooks/useWixClient";
-import { wixClientServer } from "@/lib/wixClientServer";
+// // components/CategoriesDropdownServer.tsx
+// import Link from "next/link";
+// import { useWixClient } from "@/hooks/useWixClient";
+// import { wixClientServer } from "@/lib/wixClientServer";
 
+// import CategoriesDropdownClient from "./CategoriesDropdownClient";
+
+// export default async function CategoriesDropdownServer() {
+
+//     const wixClient = await wixClientServer();
+//     const result = await wixClient.collections.queryCollections().find();
+//     const categories = result.items.map((col: any) => ({
+//         name: col.name,
+//         href: col.url?.relative || `/list?cat=${col.slug}`,
+//     }));
+
+//     return <CategoriesDropdownClient categories={categories} />;
+// }
+
+// src/components/CategoriesDropdownServer.tsx
+
+import { wixClientServer } from "@/lib/wixClientServer";
 import CategoriesDropdownClient from "./CategoriesDropdownClient";
 
-export default async function CategoriesDropdownServer() {
-
+const CategoriesDropdownServer = async () => {
     const wixClient = await wixClientServer();
     const result = await wixClient.collections.queryCollections().find();
     const categories = result.items.map((col: any) => ({
@@ -14,5 +30,9 @@ export default async function CategoriesDropdownServer() {
         href: col.url?.relative || `/list?cat=${col.slug}`,
     }));
 
-    return <CategoriesDropdownClient category={categories} />;
-}
+    return (
+        <CategoriesDropdownClient categories={categories} />
+    );
+};
+
+export default CategoriesDropdownServer;
