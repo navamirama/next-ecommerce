@@ -68,7 +68,7 @@ const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50">
+                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50 " style={{ backgroundColor: "grey", color: "white" }}>
                     {categories.map(cat => (
                         <Link key={cat.name} href={cat.href}>
                             <span
