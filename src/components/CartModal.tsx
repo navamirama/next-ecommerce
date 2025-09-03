@@ -503,7 +503,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full md:w-auto md:top-12 md:right-0 md:bottom-auto md:left-auto z-50 bg-white p-4 shadow-lg rounded-t-lg md:rounded-md">
+    <div className="fixed bottom-0 left-0 w-full md:w-auto md:top-12 md:right-0 md:bottom-auto md:left-auto z-50 bg-white p-4 shadow-lg rounded-t-lg md:rounded-md" style={{ backgroundColor: "white", color: "black" }}>
       <button className="absolute top-2 right-2 md:top-2 md:right-2" onClick={onClose}>
         ✕
       </button>
@@ -511,8 +511,8 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
         <div>Cart is Empty</div>
       ) : (
         <>
-          <h2 className="text-xl mb-4">Shopping Cart</h2>
-          <div className="flex flex-col gap-4 max-h-64 overflow-y-auto">
+          <h2 className="text-xl mb-4" >Shopping Cart</h2>
+          <div className="flex flex-col gap-4 max-h-64 overflow-y-auto" >
             {cart.lineItems.map((item) => (
               <div key={item._id} className="flex gap-4 items-center">
                 {item.image && (
@@ -531,7 +531,8 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                 <div className="flex flex-col items-end">
                   <span>${item.price?.amount}</span>
                   <button
-                    className="text-red-500 text-sm mt-1"
+                    className="text-red-500 text-sm mt-1 rounded-md"
+                    style={{ backgroundColor: "black", color: "white" }}
                     disabled={isLoading}
                     onClick={() => removeItem(wixClient, item._id!)}
                   >
@@ -547,6 +548,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
           </div>
           <button
             className="mt-4 w-full py-3 bg-green-600 text-white rounded-md"
+            style={{ backgroundColor: "#c53562", color: "white" }}
             disabled={isLoading}
             onClick={handleCheckout}
           >
@@ -559,3 +561,4 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
 };
 
 export default CartModal;
+//#6e436f //hippie blue 4c95b1 //hibiscus #c53562
