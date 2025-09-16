@@ -42,11 +42,62 @@
 //     );
 // }
 
+// "use client";
+
+// import { useState, useRef } from "react";
+// import Link from "next/link";
+// import { useClickOutside } from "@custom-react-hooks/use-click-outside";
+
+// interface Props {
+//     categories: { name: string; href: string }[];
+//     onClick?: () => void;
+// }
+
+// const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
+//     const [isOpen, setIsOpen] = useState(false);
+//     const ref = useRef<HTMLDivElement>(null);
+//     useClickOutside(ref, () => setIsOpen(false));
+
+//     return (
+//         <div className="relative inline-block text-left" ref={ref}>
+//             <button
+//                 onClick={() => setIsOpen((prev) => !prev)}
+//                 className="px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md flex items-center gap-2"
+//             >
+//                 Categories
+//                 <span className="text-gray-500">▾</span>
+//             </button>
+
+//             {isOpen && (
+//                 <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50" style={{ backgroundColor: "white", color: "black" }}>
+//                     {categories.map((cat) => (
+//                         <Link
+//                             key={cat.name}
+//                             href={cat.href}
+//                             onClick={() => {
+//                                 setIsOpen(false);   // ✅ closes dropdown
+//                                 onClick?.();        // ✅ optional callback (like closing mobile menu)
+//                             }}
+//                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+//                         >
+//                             {cat.name}
+//                         </Link>
+//                     ))}
+//                 </div>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default CategoriesDropdown;
+
+
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { useClickOutside } from '@custom-react-hooks/use-click-outside';
+import { ClickOutside } from "./ClickOutside";
+// import { ClickOutside } from "ClickOutside";  // adjust path
 
 interface Props {
     categories: { name: string; href: string }[];
@@ -56,11 +107,24 @@ interface Props {
 const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-    useClickOutside(ref, () => setIsOpen(false));
+
+    // When clicking outside of this ref, close the dropdown
+    ClickOutside(ref, () => {
+        if (isOpen) {
+            setIsOpen(false);
+        }
+    });
+
+    const toggleDropdown = (e: React.MouseEvent) => {
+        e.stopPropagation();   // avoid triggering document click / outside logic
+        setIsOpen((prev) => !prev);
+    };
+
     return (
-        <div className="relative inline-block text-left">
+        <div className="relative inline-block text-left" ref={ref}>
             <button
-                onClick={() => setIsOpen(prev => !prev)}
+                type="button"
+                onClick={toggleDropdown}
                 className="px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md flex items-center gap-2"
             >
                 Categories
@@ -68,20 +132,23 @@ const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50 " style={{ backgroundColor: "grey", color: "white" }}>
-                    {categories.map(cat => (
-                        <Link key={cat.name} href={cat.href}>
-                            <span
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    onClick?.();
-                                }}
-                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
-                            >
-                                {cat.name}
-                            </span>
-                        </Link>
-                    ))}
+                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50">
+                    <ul>
+                        {categories.map((cat) => (
+                            <li key={cat.name}>
+                                <Link
+                                    href={cat.href}
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        onClick?.();
+                                    }}
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                                >
+                                    {cat.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             )}
         </div>
@@ -89,4 +156,3 @@ const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
 };
 
 export default CategoriesDropdown;
-
