@@ -544,7 +544,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
           </div>
           <div className="mt-4 flex justify-between font-semibold">
             <span>Subtotal:</span>
-            <span>${cart.subtotal?.amount}</span>
+            <span>£{cart.subtotal?.amount}</span>
           </div>
           <button
             className="mt-4 w-full py-3 bg-green-600 text-white rounded-md"
