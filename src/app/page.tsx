@@ -27,7 +27,7 @@ const HomePage = async () => {
           <div className="top-20 pr-6">
             <ProductList
               categoryId={process.env.FEATURED_PRODUCTS_CATEGORY_ID!}
-              limit={4}
+              limit={8}
             />
           </div>
         </Suspense>
