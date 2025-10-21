@@ -529,7 +529,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                   <div className="text-sm text-gray-500">Qty: {item.quantity}</div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <span>${item.price?.amount}</span>
+                  <span>£{item.price?.amount}</span>
                   <button
                     className="text-red-500 text-sm mt-1 rounded-md"
                     style={{ backgroundColor: "black", color: "white" }}
