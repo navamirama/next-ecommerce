@@ -29,7 +29,7 @@ export default function Contact() {
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Email</h3>
                     <p className="text-gray-600 dark:text-gray-300">
                         <a href="mailto:contact@velagraphicwear.com" className="text-blue-600 dark:text-blue-400 hover:underline">
-                            contact@velagraphicwear.com
+                            contact@velagraphicwear.co.uk
                         </a>
                     </p>
                 </div>

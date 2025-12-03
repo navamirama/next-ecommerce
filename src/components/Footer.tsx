@@ -22,7 +22,7 @@ const Footer = () => {
           <p>
             England, United Kingdom
           </p>
-          <span className="font-semibold">help@velaprints.co.uk</span>
+          <span className="font-semibold">contact@velagraphicwear.co.uk</span>
           {/* <span className="font-semibold">+1 234 567 890</span> */}
           {/* <div className="flex gap-6">
             <Image src="/facebook.png" alt="" width={16} height={16} />
@@ -92,7 +92,7 @@ const Footer = () => {
       </div>
       {/* BOTTOM */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
-        <div className="">© 2024 Lama Shop</div>
+        <div className="">© 2025 Vela Shop</div>
         <div className="flex flex-col gap-8 md:flex-row">
           <div className="">
             <span className="text-gray-500 mr-4">Language</span>
