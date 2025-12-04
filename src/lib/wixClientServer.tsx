@@ -33,6 +33,7 @@ import { collections, products } from "@wix/stores";
 import { orders } from "@wix/ecom";
 import { cookies } from "next/headers";
 import { members } from "@wix/members";
+import { contacts } from "@wix/crm";
 
 export const wixClientServer = async () => {
   let refreshToken;
@@ -40,7 +41,7 @@ export const wixClientServer = async () => {
   try {
     const cookieStore = cookies();
     refreshToken = JSON.parse(cookieStore.get("refreshToken")?.value || "{}");
-  } catch (e) {}
+  } catch (e) { }
 
   const wixClient = createClient({
     modules: {
@@ -48,6 +49,7 @@ export const wixClientServer = async () => {
       collections,
       orders,
       members,
+      contacts
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@custom-react-hooks/use-click-outside": "^1.5.1",
+    "@wix/contacts": "^1.0.27",
+    "@wix/crm": "^1.0.1256",
     "@wix/ecom": "^1.0.540",
     "@wix/members": "^1.0.77",
     "@wix/redirects": "^1.0.44",
