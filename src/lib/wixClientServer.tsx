@@ -34,6 +34,7 @@ import { orders } from "@wix/ecom";
 import { cookies } from "next/headers";
 import { members } from "@wix/members";
 import { contacts } from "@wix/crm";
+import { ApiKeyStrategy } from "@wix/sdk";
 
 export const wixClientServer = async () => {
   let refreshToken;
@@ -57,6 +58,22 @@ export const wixClientServer = async () => {
         refreshToken,
         accessToken: { value: "", expiresAt: 0 },
       },
+    }),
+  });
+
+
+  return wixClient;
+};
+
+export const wixAdminClientServer = () => {
+  const wixClient = createClient({
+    modules: {
+      contacts,
+    },
+    auth: ApiKeyStrategy({
+      apiKey: process.env.WIX_API_KEY!,
+      accountId: process.env.WIX_ACCOUNT_ID!, // required
+      siteId: process.env.WIX_SITE_ID!,       // recommended for site APIs
     }),
   });
 
