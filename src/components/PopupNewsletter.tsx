@@ -277,7 +277,7 @@ export default function PopupNewsletter() {
                             lineHeight: "1.3",
                         }}
                     >
-                        Join Vela Family
+                        Join KULT Family
                     </h2>
 
                     <p

@@ -29,7 +29,7 @@ export default function About() {
                         src="/about.png"
                         width={72}
                         height={96}
-                        alt="Vela Graphic Wear collection"
+                        alt="KULT Wear collection"
                         className="rounded-lg shadow-lg object-cover w-full h-full"
                     />
                 </div>
@@ -37,10 +37,10 @@ export default function About() {
                 {/* Text Content */}
                 <div className="w-full lg:w-1/2 space-y-6">
                     <h2 className="text-4xl font-extrabold text-gray-800">
-                        About Vela Graphic Wear
+                        About KULT Wear
                     </h2>
                     <p className="text-lg text-gray-600">
-                        At <span className="font-semibold">Vela Graphic Wear</span>, we celebrate bold self-expression. From street style to anime, Japanese, Indian desi, and spiritual-themed prints—all on ultra-soft, premium cotton T-shirts and hoodies.
+                        At <span className="font-semibold">KULT Graphic Wear</span>, we celebrate street culture with bold self-expression. From street style to anime, Japanese, Indian desi, and spiritual-themed prints—all on ultra-soft, premium cotton T-shirts and hoodies.
                     </p>
                     <p className="text-gray-700">
                         {`Each piece blends comfort with culture, designed to feel as good as it looks. Whether you're after edgy streetwear or a mindful spiritual tee, you’ll find your vibe here.`}

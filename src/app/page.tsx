@@ -21,9 +21,9 @@ const HomePage = async () => {
 
   return (
     <div className="">
-      {/* <Slider /> */}
+      <Slider />
       <PopupNewsletter />
-      <div className="pt-8 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+      {/* <div className="pt-8 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <h1 className="text-2xl bold">Featured Products</h1>
         <Suspense fallback={<Skeleton />}>
           <div className="top-20 pr-6">
@@ -33,7 +33,7 @@ const HomePage = async () => {
             />
           </div>
         </Suspense>
-      </div>
+      </div> */}
 
       <div className="mt-24">
         <h1 className="text-2xl px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 mb-12">

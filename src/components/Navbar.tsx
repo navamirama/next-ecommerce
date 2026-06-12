@@ -265,27 +265,20 @@ export const Navbar = async () => {
 
   return (
 
-    <nav className="h-20 px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-white shadow-sm mt-10">
+    <nav className="h-20 px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-black shadow-sm mt-10" style={{ backgroundColor: "black", color: "white" }}>
       <div className="flex items-center justify-between h-full">
-        {/* <nav className="w-full bg-white shadow-sm">
-      <div className="mx-auto px-4 md:px-8 lg:px-16 flex items-center justify-between h-20"> */}
-        {/* Logo */}
-        {/* <Link href="/" className="relative w-[240px] h-[60px] "> */}
+
         <Link href="/" >
           <Image
-            src="/logo.png"
+            src="/Kult-logo.png"
             alt="Logo"
-            width={125}
-            height={40}
+            width={195}
+            height={150}
             // fill
             style={{ objectFit: 'contain' }}
           />
         </Link>
-        {/* <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="Logo" width={140} height={60} className="object-contain" />
-        </Link> */}
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8 text-gray-700 text-base font-medium">
           <Link href="/">Home</Link>
           <CategoriesDropdownServer />
