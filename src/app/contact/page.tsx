@@ -22,7 +22,7 @@ export default function Contact() {
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
                 {`We're always happy to hear from you! Whether you have a question about our products,
   need help with your order, or just want to share your feedback, feel free to reach out.
-  Our team at Vela Graphic Wear will get back to you as soon as possible.`}
+  Our team at KULT Store Wear will get back to you as soon as possible.`}
             </p>
             <div className="space-y-4">
                 <div>

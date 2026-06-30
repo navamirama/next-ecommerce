@@ -80,15 +80,15 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           </div>
         ))}
         <div className="h-[2px] bg-gray-100" />
-        <h1 className="text-2xl">How do you submit your custom message and design??</h1>
-        {params.slug === "custom-print" && (
+        {/* <h1 className="text-2xl">How do you submit your custom message and design??</h1> */}
+        {/* {params.slug === "custom-print" && (
           <div className="my-6 p-4 bg-yellow-100 border border-yellow-400 rounded">
             <p className="text-lg">
               Please drop us a WhatsApp with your custom message and design on +44 7474163199 with your order number.<br />
               Please select the apparel size and which side you prefer the design from the above options.
             </p>
           </div>
-        )}
+        )} */}
 
 
         {/* PRODUCT REVIEWS */}

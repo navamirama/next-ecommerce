@@ -63,7 +63,7 @@ const Slider = () => {
               priority={slide.id === 1}
             />
             <Link
-              href="list?cat=anime"
+              href="list?cat=new-arrivals"
               className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded shadow-lg text-lg font-semibold hover:bg-gray-900 transition"
               style={{ backgroundColor: "black", color: "white" }}
             >
