@@ -17,7 +17,7 @@ const Footer = () => {
         {/* LEFT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
-            <div className="text-2xl tracking-wide">Vela Prints</div>
+            <div className="text-2xl tracking-wide">KULT Store</div>
           </Link>
           <p>
             England, United Kingdom
