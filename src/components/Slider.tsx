@@ -1,109 +1,216 @@
+// "use client";
+
+// import Image from "next/image";
+// import Link from "next/link";
+// import { useEffect, useState } from "react";
+
+// const slides = [
+//   {
+//     id: 1,
+//     title: "Summer Sale Collections",
+//     img: "/Slider3.png",
+//     url: "/",
+//     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+//   },
+//   {
+//     id: 2,
+//     title: "Winter Sale Collections",
+//     img: "/Slider4.png",
+//     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+//   },
+//   {
+//     id: 3,
+//     title: "Winter Sale Collections",
+//     img: "/Slider2.png",
+//     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+//   },
+//   {
+//     id: 4,
+//     title: "Winter Sale Collections",
+//     img: "/Slider4.png",
+//     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+//   }
+// ];
+
+// const Slider = () => {
+//   const [current, setCurrent] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+//     }, 3000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <div className="h-[calc(100vh-200px)] overflow-hidden border-8 border-white" style={{ border: "double", color: "white" }}>
+//       <div
+//         className="w-max h-full flex transition-all ease-in-out duration-1000"
+//         style={{ transform: `translateX(-${current * 100}vw)` }}
+//       >
+//         {slides.map((slide) => (
+//           <div
+//             className={`${slide.bg} w-screen h-full relative`}
+//             key={slide.id}
+//           >
+//             <Image
+//               src={slide.img}
+//               alt={slide.title}
+//               fill
+//               sizes="100vw"
+//               className="object-cover"
+//               priority={slide.id === 1}
+//             />
+//             <Link
+//               href="list?cat=new-arrivals"
+//               className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded shadow-lg text-lg font-semibold hover:bg-gray-900 transition"
+//               style={{ backgroundColor: "black", color: "white" }}
+//             >
+//               Shop Now
+//             </Link>
+//           </div>
+//         ))}
+//       </div>
+//       <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+
+//         {slides.map((slide, index) => (
+//           <div
+//             className={`w-3 h-3  rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${current === index ? "scale-150" : ""
+//               }`}
+//             key={slide.id}
+//             onClick={() => setCurrent(index)}
+//           >
+//             {current === index && (
+//               <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
+//             )}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Slider;
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const slides = [
+type Slide = {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  url: string;
+};
+
+const slides: Slide[] = [
   {
     id: 1,
-    title: "Summer Sale Collections",
-    // description: "Sale! Up to 50% off!",
-    // img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
-    img: "/Slider3.png",
-    url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+    title: "Mythology Collection",
+    subtitle: "PREMIUM STREETWEAR",
+    image: "/Slider2.png",
+    url: "/list?cat=new-arrivals",
   },
   {
     id: 2,
-    title: "Winter Sale Collections",
-    // description: "Sale! Up to 50% off!",
-    // img: "https://images.pexels.com/photos/26316180/pexels-photo-26316180/free-photo-of-woman-holding-brown-leather-bag.jpeg?auto=compress&cs=tinysrgb&w=600",
-    img: "/Slider4.png",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+    title: "Anime Inspired",
+    subtitle: "KULT ORIGINALS",
+    image: "/Slider4.png",
+    url: "/list?cat=anime",
   },
   {
     id: 3,
-    title: "Winter Sale Collections",
-    // description: "Sale! Up to 50% off!",
-    // img: "https://images.pexels.com/photos/26316180/pexels-photo-26316180/free-photo-of-woman-holding-brown-leather-bag.jpeg?auto=compress&cs=tinysrgb&w=600",
-    img: "/Slider2.png",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+    title: "KULT Inspired",
+    subtitle: "LIVE FREE",
+    image: "/Slider3.png",
+    url: "/list?cat=kult-collections",
   },
-  {
-    id: 4,
-    title: "Winter Sale Collections",
-    // description: "Sale! Up to 50% off!",
-    // img: "https://images.pexels.com/photos/26316180/pexels-photo-26316180/free-photo-of-woman-holding-brown-leather-bag.jpeg?auto=compress&cs=tinysrgb&w=600",
-    img: "/Slider4.png",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
-  }
-  // {
-  //   id: 3,
-  //   title: "Spring Sale Collections",
-  //   description: "Sale! Up to 50% off!",
-  //   img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //   url: "/",
-  //   bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
-  // },
 ];
 
 const Slider = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3000);
+    }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="h-[calc(100vh-200px)] overflow-hidden border-8 border-white" style={{ border: "double", color: "white" }}>
+    <section className="relative w-full overflow-hidden bg-white">
       <div
-        className="w-max h-full flex transition-all ease-in-out duration-1000"
-        style={{ transform: `translateX(-${current * 100}vw)` }}
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{
+          width: `${slides.length * 100}%`,
+          transform: `translateX(-${current * (100 / slides.length)}%)`,
+        }}
       >
         {slides.map((slide) => (
           <div
-            className={`${slide.bg} w-screen h-full relative`}
             key={slide.id}
+            className="flex-shrink-0 bg-white"
+            style={{ width: `${100 / slides.length}%` }}
           >
-            <Image
-              src={slide.img}
-              alt={slide.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              priority={slide.id === 1}
-            />
-            <Link
-              href="list?cat=new-arrivals"
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded shadow-lg text-lg font-semibold hover:bg-gray-900 transition"
-              style={{ backgroundColor: "black", color: "white" }}
-            >
-              Shop Now
-            </Link>
-          </div>
-        ))}
-      </div>
-      <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+            <div className="flex flex-col md:flex-row md:min-h-[80vh]">
+              {/* TEXT AREA */}
+              <div className="w-full md:w-[46%] flex flex-col items-center justify-center text-center px-6 pt-10 pb-6 md:py-0">
+                <p className="uppercase tracking-18em] text-gray-500 text-[11px] md:text-sm font-semibold mb-3">
+                  {slide.subtitle}
+                </p>
 
-        {slides.map((slide, index) => (
-          <div
-            className={`w-3 h-3  rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${current === index ? "scale-150" : ""
-              }`}
-            key={slide.id}
-            onClick={() => setCurrent(index)}
-          >
-            {current === index && (
-              <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
-            )}
+                <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] text-black max-w-[360px] md:max-w-none">
+                  {slide.title}
+                </h1>
+
+                <div className="w-16 md:w-20 h-[3px] bg-black rounded-full my-4 md:my-6" />
+
+                <Link href={slide.url}>
+                  <button className="bg-black text-white px-7 py-3 rounded-full text-xs md:text-base font-semibold tracking-wider hover:bg-zinc-800 transition-all duration-300 hover:scale-105">
+                    <button className="bg-black text-white rounded-full px-8 py-3 font-semibold">
+                      SHOP NOW
+                    </button>
+                  </button>
+                </Link>
+              </div>
+
+              {/* IMAGE AREA */}
+              <div className="w-full md:w-[54%] px-3 md:px-8 pb-0 md:pb-0 flex items-start md:items-center justify-center">
+                <div className="relative w-full h-[300px] sm:h-[300px] md:h-[65vh]">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    priority={slide.id === 1}
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 54vw"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-    </div>
+
+      {/* DOTS */}
+      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={`transition-all duration-300 ${current === index
+              ? "w-8 h-2 bg-black rounded-full"
+              : "w-2 h-2 bg-gray-300 rounded-full"
+              }`}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 
