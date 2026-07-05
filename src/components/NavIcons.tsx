@@ -258,7 +258,7 @@ const NavIcons = () => {
   };
 
   return (
-    <div ref={ref} className="flex items-center gap-4 xl:gap-6 relative">
+    <div ref={ref} className="flex items-center gap-4 xl:gap-6 relative" style={{ backgroundColor: "white", color: "white" }}>
       {/* Profile */}
       <Image
         src="/profile.png"
@@ -281,7 +281,7 @@ const NavIcons = () => {
       <div className="relative cursor-pointer" onClick={() => setIsCartOpen(true)}>
         <Image src="/cart.png" alt="Cart" width={22} height={22} />
         {counter > 0 && (
-          <div className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-xs flex items-center justify-center rounded-full">
+          <div className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-xs flex items-center justify-center rounded-full" style={{ backgroundColor: "black", color: "white" }}>
             {counter}
           </div>
         )}

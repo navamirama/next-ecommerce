@@ -142,7 +142,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section className="relative w-full overflow-hidden bg-white mb-0">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{
@@ -157,30 +157,26 @@ const Slider = () => {
             style={{ width: `${100 / slides.length}%` }}
           >
             <div className="flex flex-col md:flex-row md:min-h-[80vh]">
-              {/* TEXT AREA */}
-              <div className="w-full md:w-[46%] flex flex-col items-center justify-center text-center px-6 pt-10 pb-6 md:py-0">
-                <p className="uppercase tracking-18em] text-gray-500 text-[11px] md:text-sm font-semibold mb-3">
+              {/* TEXT */}
+              <div className="w-full md:w-[46%] flex flex-col items-center justify-center text-center px-6 pt-7 pb-4 md:py-0">
+                <p className="uppercase tracking-[0.2em] text-black text-[10px] md:text-sm font-bold mb-2">
                   {slide.subtitle}
                 </p>
 
-                <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] text-black max-w-[360px] md:max-w-none">
+                <h1 className="text-3xl sm:text-4xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] text-black max-w-[330px] md:max-w-none">
                   {slide.title}
                 </h1>
 
-                <div className="w-16 md:w-20 h-[3px] bg-black rounded-full my-4 md:my-6" />
-
-                <Link href={slide.url}>
-                  <button className="bg-black text-white px-7 py-3 rounded-full text-xs md:text-base font-semibold tracking-wider hover:bg-zinc-800 transition-all duration-300 hover:scale-105">
-                    <button className="bg-black text-white rounded-full px-8 py-3 font-semibold">
-                      SHOP NOW
-                    </button>
+                <Link href={slide.url} className="mt-6 md:mt-8">
+                  <button className="bg-black text-white rounded-full px-8 py-3 font-semibold" style={{ backgroundColor: "black", color: "white" }}>
+                    SHOP NOW
                   </button>
                 </Link>
               </div>
 
-              {/* IMAGE AREA */}
-              <div className="w-full md:w-[54%] px-3 md:px-8 pb-0 md:pb-0 flex items-start md:items-center justify-center">
-                <div className="relative w-full h-[300px] sm:h-[300px] md:h-[65vh]">
+              {/* IMAGE */}
+              <div className="w-full md:w-[54%] flex items-start md:items-center justify-center px-3 md:px-8 pt-0 pb-0">
+                <div className="relative w-full h-[205px] sm:h-[280px] md:h-[65vh]">
                   <Image
                     src={slide.image}
                     alt={slide.title}
@@ -196,16 +192,16 @@ const Slider = () => {
         ))}
       </div>
 
-      {/* DOTS */}
-      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      {/* DOTS - hidden on mobile to save space */}
+      <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
             className={`transition-all duration-300 ${current === index
-              ? "w-8 h-2 bg-black rounded-full"
-              : "w-2 h-2 bg-gray-300 rounded-full"
+                ? "w-8 h-2 bg-black rounded-full"
+                : "w-2 h-2 bg-gray-300 rounded-full"
               }`}
           />
         ))}
