@@ -123,8 +123,8 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    title: "KULT Inspired",
-    subtitle: "LIVE FREE",
+    title: "KULT ORIGINALS",
+    subtitle: "New Street Uniform",
     image: "/Slider3.png",
     url: "/list?cat=kult-collections",
   },
@@ -200,8 +200,8 @@ const Slider = () => {
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
             className={`transition-all duration-300 ${current === index
-                ? "w-8 h-2 bg-black rounded-full"
-                : "w-2 h-2 bg-gray-300 rounded-full"
+              ? "w-8 h-2 bg-black rounded-full"
+              : "w-2 h-2 bg-gray-300 rounded-full"
               }`}
           />
         ))}
