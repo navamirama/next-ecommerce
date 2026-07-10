@@ -60,3 +60,12 @@ kill -9 PID
 // "tailwindcss": "^3.4.1",
 // "typescript": "^5"
 // }
+
+ <Link href={slide.url}>
+
+                  <button className="bg-black text-white rounded-full px-8 py-3 font-semibold" style={{ backgroundColor: "black", color: "white" }}>
+                    SHOP NOW
+                  </button>
+
+{/\* \*/}
+</Link>

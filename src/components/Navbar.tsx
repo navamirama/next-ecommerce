@@ -279,10 +279,11 @@ export const Navbar = async () => {
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-gray-700 text-base font-medium">
+        <div className="hidden md:flex items-center gap-8 text-white text-base font-medium">
           <Link href="/">Home</Link>
           <CategoriesDropdownServer />
           <Link href="/about">About</Link>
+          <Link href="/sports">Sports Jersey</Link>
           <Link href="/contact">Contact</Link>
         </div>
 

@@ -109,20 +109,34 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: 1,
+    title: "Customised Jersey's",
+    subtitle: "SPORTS Jersey's",
+    image: "/Slider5.png",
+    url: "/sports",
+  },
+  {
+    id: 2,
     title: "Mythology Collection",
     subtitle: "PREMIUM STREETWEAR",
     image: "/Slider2.png",
     url: "/list?cat=new-arrivals",
   },
+  // {
+  //   id: 3,
+  //   title: "Mythology Collection",
+  //   subtitle: "PREMIUM STREETWEAR",
+  //   image: "/Slider2.png",
+  //   url: "/list?cat=sports-jersey",
+  // },
   {
-    id: 2,
+    id: 4,
     title: "Anime Inspired",
     subtitle: "KULT ORIGINALS",
     image: "/Slider4.png",
     url: "/list?cat=anime",
   },
   {
-    id: 3,
+    id: 5,
     title: "KULT ORIGINALS",
     subtitle: "New Street Uniform",
     image: "/Slider3.png",

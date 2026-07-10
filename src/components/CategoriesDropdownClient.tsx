@@ -125,14 +125,14 @@ const CategoriesDropdown: React.FC<Props> = ({ categories, onClick }) => {
             <button
                 type="button"
                 onClick={toggleDropdown}
-                className="px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md flex items-center gap-2"
+                className="px-4 py-2  text-base font-medium text-white hover:bg-grey rounded-md flex items-center gap-2"
             >
                 Categories
-                <span className="text-gray-500">▾</span>
+                <span className="text-white">▾</span>
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50" style={{ backgroundColor: "white", color: "black" }}>
+                <div className="absolute mt-2 w-48  shadow-lg rounded-md z-50" style={{ backgroundColor: "white", color: "black" }}>
                     <ul>
                         {categories.map((cat) => (
                             <li key={cat.name}>
