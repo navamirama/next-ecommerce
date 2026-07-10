@@ -313,12 +313,12 @@ export default function SportsHero() {
 
                             {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" /> */}
 
-                            <div className="absolute bottom-8 left-8 right-8 text-white">
+                            {/* <div className="absolute bottom-8 left-8 right-8 text-white">
                                 <p className="text-sm tracking-[0.25em] uppercase">
                                     Team Moments
                                 </p>
 
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* Smaller stacked images/content */}
