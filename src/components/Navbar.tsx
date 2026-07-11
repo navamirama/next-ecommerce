@@ -239,13 +239,14 @@ import Menu from "./Menu"
 
 // export default Navbar;
 
-import Link from "next/link";
 import Image from "next/image";
-import MobileMenu from "./MobileMenu"; // client-side hamburger
+import Link from "next/link";
+
 import { wixClientServer } from "@/lib/wixClientServer";
+
+import CategoriesDropdownServer from "./CategoriesDropdownServer";
 import NavIcons from "./NavIcons";
 import SearchBar from "./SearchBar";
-import CategoriesDropdownServer from "./CategoriesDropdownServer";
 
 interface Category {
   _id?: string;
@@ -257,53 +258,134 @@ export const Navbar = async () => {
   const wixClient = await wixClientServer();
   const result = await wixClient.collections.queryCollections().find();
 
-  const categories: Category[] = result.items.map((col: any) => ({
-    id: col._id,
-    name: col.name,
-    href: col.url?.relative || `${col.slug}`,
+  const categories: Category[] = result.items.map((collection: any) => ({
+    _id: collection._id,
+    name: collection.name,
+    href: collection.url?.relative || `/${collection.slug}`,
   }));
 
   return (
+    <>
+      <nav className="relative z-50 bg-[#0A0A0A] text-white shadow-sm">
+        {/* Desktop navbar */}
+        <div className="hidden h-20 items-center justify-between px-6 md:flex md:px-8 lg:px-12 xl:px-20 2xl:px-32">
+          {/* Logo */}
+          <Link href="/" className="flex shrink-0 items-center">
+            <Image
+              src="/Kult-logo.png"
+              alt="KULT Store"
+              width={150}
+              height={64}
+              priority
+              className="h-auto w-[125px] object-contain lg:w-[145px]"
+            />
+          </Link>
 
-    <nav className="h-20 px-4 md:px-8 lg:px-16 xl:px-20 2xl:px-64 bg-black shadow-sm mt-10" style={{ backgroundColor: "black", color: "white" }}>
-      <div className="flex items-center justify-between h-full">
+          {/* Desktop links */}
+          <div className="flex items-center gap-7 text-sm font-semibold text-zinc-300 lg:gap-9 lg:text-base">
+            <Link
+              href="/"
+              className="transition-colors duration-200 hover:text-white"
+            >
+              Home
+            </Link>
 
-        <Link href="/" >
-          <Image
-            src="/Kult-logo.png"
-            alt="Logo"
-            width={195}
-            height={150}
-            // fill
-            style={{ objectFit: 'contain' }}
-          />
-        </Link>
+            <div className="flex items-center [&_button]:text-zinc-300 [&_button]:transition-colors [&_button]:duration-200 hover:[&_button]:text-white">
+              <CategoriesDropdownServer />
+            </div>
 
-        <div className="hidden md:flex items-center gap-8 text-white text-base font-medium">
-          <Link href="/">Home</Link>
-          <CategoriesDropdownServer />
-          <Link href="/about">About</Link>
-          <Link href="/sports">Sports Jersey</Link>
-          <Link href="/contact">Contact</Link>
+            <Link
+              href="/sports"
+              className="transition-colors duration-200 hover:text-white"
+            >
+              Sports
+            </Link>
+
+            <Link
+              href="/about"
+              className="transition-colors duration-200 hover:text-white"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="transition-colors duration-200 hover:text-white"
+            >
+              Contact
+            </Link>
+          </div>
+
+          {/* Desktop search and icons */}
+          <div className="flex items-center gap-5">
+            <SearchBar />
+            <NavIcons />
+          </div>
         </div>
 
-        {/* Right Icons Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          <SearchBar />
-          <NavIcons />
-        </div>
+        {/* Mobile navbar */}
+        <div className="md:hidden">
+          {/* Compact logo row */}
+          <div className="flex h-[66px] items-center justify-center px-4">
+            <Link href="/" className="flex items-center justify-center">
+              <Image
+                src="/Kult-logo.png"
+                alt="KULT Store"
+                width={108}
+                height={44}
+                priority
+                className="h-auto w-[95px] object-contain"
+              />
+            </Link>
+          </div>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center gap-4">
-          <MobileMenu categories={categories} />
-        </div>
-      </div>
+          {/* Mobile navigation row */}
+          <div className="grid grid-cols-5 border-y border-white/10">
+            <Link
+              href="/"
+              className="flex min-h-[46px] items-center justify-center px-1 text-center text-[12px] font-semibold text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              Home
+            </Link>
 
-      {/* Mobile NavIcons fixed at bottom */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg p-2 flex justify-end gap-4" style={{ backgroundColor: "white", color: "white" }}>
+            <div className="flex min-h-[46px] items-center justify-center px-1 text-center text-[12px] font-semibold text-zinc-300">
+              <div className="flex items-center justify-center [&_button]:flex [&_button]:items-center [&_button]:justify-center [&_button]:gap-1 [&_button]:bg-transparent [&_button]:p-0 [&_button]:text-[12px] [&_button]:font-semibold [&_button]:text-zinc-300 [&_button]:shadow-none hover:[&_button]:text-white">
+                <CategoriesDropdownServer />
+              </div>
+            </div>
+
+            <Link
+              href="/sports"
+              className="flex min-h-[46px] items-center justify-center px-1 text-center text-[12px] font-semibold text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              Jersey
+            </Link>
+
+            <Link
+              href="/about"
+              className="flex min-h-[46px] items-center justify-center px-1 text-center text-[12px] font-semibold text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="flex min-h-[46px] items-center justify-center px-1 text-center text-[12px] font-semibold text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile bottom account/cart bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex min-h-[54px] items-center justify-end border-t border-zinc-200 bg-white px-4 shadow-[0_-4px_18px_rgba(0,0,0,0.08)] md:hidden">
         <NavIcons />
       </div>
-    </nav>
+
+      {/* Prevent mobile bottom bar covering page content */}
+      <div className="h-[54px] md:hidden" />
+    </>
   );
 };
 
