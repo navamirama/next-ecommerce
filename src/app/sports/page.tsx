@@ -1,171 +1,3 @@
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function SportsPage() {
-//     return (
-//         <div className="bg-white text-black">
-//             {/* HERO */}
-//             <section className="grid lg:grid-cols-2 min-h-[720px]">
-//                 {/* LEFT */}
-//                 <div className="flex items-center px-8 md:px-16 py-20">
-//                     <div>
-//                         <p className="text-xs font-bold tracking-[0.3em] uppercase">
-//                             ⚽ New Service
-//                         </p>
-
-//                         <h1 className="mt-8 text-5xl md:text-7xl font-black leading-tight">
-//                             SPORTS
-//                             <br />
-//                             TEAM
-//                             <br />
-//                             PRINTING
-//                         </h1>
-
-//                         <p className="mt-8 max-w-xl text-lg leading-8">
-//                             Professional jersey name & number printing for football, cricket,
-//                             volleyball, schools, tournaments and corporate events.
-//                         </p>
-
-//                         <div className="flex flex-wrap gap-3 mt-10">
-//                             {["Football", "Cricket", "Schools", "Corporate", "Tournaments"].map(
-//                                 (item) => (
-//                                     <span
-//                                         key={item}
-//                                         className="border border-black rounded-full px-5 py-2 text-sm"
-//                                     >
-//                                         {item}
-//                                     </span>
-//                                 )
-//                             )}
-//                         </div>
-
-//                         <div className="flex flex-wrap gap-6 mt-14 items-center">
-//                             <Link href="/collections/custom-print" className="font-bold">
-//                                 Start Your Order
-//                             </Link>
-
-//                             <Link
-//                                 href="/collections"
-//                                 className="border border-black rounded-full px-10 py-4"
-//                             >
-//                                 Browse Products
-//                             </Link>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* RIGHT VIDEO */}
-//                 <div className="relative min-h-[500px] overflow-hidden">
-//                     <video
-//                         autoPlay
-//                         muted
-//                         loop
-//                         playsInline
-//                         preload="auto"
-//                         className="absolute inset-0 w-full h-full object-cover"
-//                     >
-//                         <source src="/jersey.mp4" type="video/mp4" />
-//                     </video>
-
-//                     <div className="absolute bottom-10 left-10 bg-white/30 backdrop-blur-xl rounded-2xl px-7 py-5">
-//                         <p className="text-xs tracking-[0.25em] uppercase">KULT Store</p>
-//                         <h3 className="font-bold text-xl mt-2">Printed In-House</h3>
-//                         <p className="text-sm mt-1">Premium Heat Press Finish</p>
-//                     </div>
-//                 </div>
-//             </section>
-// <section className="px-6 md:px-16 py-24">
-//     <div className="max-w-7xl mx-auto">
-//         <h2 className="text-4xl md:text-6xl font-black text-center">
-//             How It Works
-//         </h2>
-
-//         <div className="grid md:grid-cols-4 gap-8 mt-16">
-//             {[
-//                 ["01", "Choose Jersey", "Bring your own jersey or choose a blank."],
-//                 ["02", "Send Details", "Share player names, numbers and sizes."],
-//                 ["03", "We Print", "We press each jersey professionally."],
-//                 ["04", "Collect / Deliver", "Collect locally or arrange delivery."],
-//             ].map(([step, title, text]) => (
-//                 <div key={step} className="border rounded-3xl p-8">
-//                     <p className="text-5xl font-black text-gray-200">{step}</p>
-//                     <h3 className="font-black text-2xl mt-6">{title}</h3>
-//                     <p className="text-gray-600 mt-4 leading-7">{text}</p>
-//                 </div>
-//             ))}
-//         </div>
-//     </div>
-// </section>
-//             <div className="bg-red-500 p-10 text-3xl font-bold text-white">
-//                 Tailwind colour test
-//             </div>
-//             {/* RECENT TEAM ORDERS */}
-//             <section className="w-full bg-zinc-50 py-24">
-//                 <div className="max-w-[1800px] mx-auto px-8 lg:px-12">
-
-
-//                     <div className="grid lg:grid-cols-[2.2fr_1fr] gap-8 mt-12">
-//                         {/* Large customer/team image */}
-//                         <div className="lg:col-span-2 overflow-hidden rounded-3xl bg-black">
-//                             <Image
-//                                 src="/customer.png"
-//                                 alt="Customers wearing KULT printed sports jerseys"
-//                                 width={1600}
-//                                 height={1200}
-//                                 className="block h-auto w-full"
-//                                 priority
-//                             />
-
-
-//                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-//                             <div className="absolute bottom-8 left-8 right-8 text-white">
-//                                 <p className="text-sm tracking-[0.25em] uppercase">
-//                                     Team Moments
-//                                 </p>
-
-//                             </div>
-//                         </div>
-
-//                         {/* Smaller stacked images/content */}
-//                         <div className="grid gap-6">
-
-//                         </div>
-//                     </div>
-//                 </div>
-//             </section >
-
-//             {/* HOW IT WORKS */}
-
-
-// {/* CTA */}
-// <section className="px-6 md:px-16 py-24 bg-black text-white">
-//     <div className="max-w-5xl mx-auto text-center">
-//         <p className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">
-//             Ready for your next match?
-//         </p>
-
-//         <h2 className="mt-6 text-4xl md:text-6xl font-black">
-//             Get Your Team Jerseys Printed
-//         </h2>
-
-//         <p className="mt-6 text-gray-300 text-lg leading-8">
-//             Whether it is one jersey or a full squad order, KULT can help with
-//             clean, professional name and number printing.
-//         </p>
-
-//         <Link
-//             href="/collections/custom-print"
-//             className="inline-block mt-10 bg-white text-black px-10 py-4 rounded-full font-bold"
-//         >
-//             Start Your Order
-//         </Link>
-//     </div>
-// </section>
-//         </div >
-//     );
-// }
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -272,6 +104,30 @@ export default function SportsHero() {
                 </div>
             </section>
             <div className="bg-[#F5F3EE]" />
+            <section className="w-full bg-zinc-50 py-24">
+                <div className="max-w-[1800px] mx-auto px-8 lg:px-12">
+
+
+                    <div className="grid lg:grid-cols-[2.2fr_1fr] gap-8 mt-12">
+                        {/* Large customer/team image */}
+                        <div className="lg:col-span-2 overflow-hidden rounded-3xl bg-black">
+                            <Image
+                                src="/customer.png"
+                                alt="Customers wearing KULT printed sports jerseys"
+                                width={1600}
+                                height={1200}
+                                className="block h-auto w-full"
+                                priority
+                            />
+                        </div>
+
+                        {/* Smaller stacked images/content */}
+                        <div className="grid gap-6">
+
+                        </div>
+                    </div>
+                </div>
+            </section >
             <section className="px-6 md:px-16 py-24 bg-white">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-4xl md:text-6xl font-black text-center">
@@ -295,39 +151,7 @@ export default function SportsHero() {
                 </div>
             </section>
 
-            <section className="w-full bg-zinc-50 py-24">
-                <div className="max-w-[1800px] mx-auto px-8 lg:px-12">
 
-
-                    <div className="grid lg:grid-cols-[2.2fr_1fr] gap-8 mt-12">
-                        {/* Large customer/team image */}
-                        <div className="lg:col-span-2 overflow-hidden rounded-3xl bg-black">
-                            <Image
-                                src="/customer.png"
-                                alt="Customers wearing KULT printed sports jerseys"
-                                width={1600}
-                                height={1200}
-                                className="block h-auto w-full"
-                                priority
-                            />
-
-                            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" /> */}
-
-                            {/* <div className="absolute bottom-8 left-8 right-8 text-white">
-                                <p className="text-sm tracking-[0.25em] uppercase">
-                                    Team Moments
-                                </p>
-
-                            </div> */}
-                        </div>
-
-                        {/* Smaller stacked images/content */}
-                        <div className="grid gap-6">
-
-                        </div>
-                    </div>
-                </div>
-            </section >
 
             {/* CTA */}
             <section className="px-6 md:px-16 py-24 bg-black text-white">
